@@ -7,6 +7,7 @@ import appTheme from '../styles/theme';
 import Box from '@mui/material/Box';
 
 import Transaction from './Transaction';
+import Transfer from './Transfer';
 
 function App() {
   const [web3, setWeb3] = useState();
@@ -36,6 +37,10 @@ function App() {
 
   const isLoading = !web3 || !accounts || !wallet;
 
+  const createTransfer = ({ amount, to }) => {
+    wallet.methods.createTransfer(amount, to).send({ from: accounts[0] });
+  };
+
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline enableColorScheme />
@@ -45,6 +50,7 @@ function App() {
         ) : (
           <Box m={4}>
             <Transaction approvers={approvers} quorum={quorum} />
+            <Transfer createTransfer={createTransfer} />
           </Box>
         )}
       </Box>
