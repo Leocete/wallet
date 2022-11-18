@@ -58,7 +58,7 @@ function App() {
         <Grid container sx={{ padding: 4 }} spacing={5}>
           <Grid item xs={12} md={6}>
             <Approvers approvers={approvers} quorum={quorum} />
-            <CreateTransfer createTrsansfer={createTransfer} />
+            <CreateTransfer createTransfer={createTransfer} />
           </Grid>
 
           <Grid item xs={12} md={6}>
